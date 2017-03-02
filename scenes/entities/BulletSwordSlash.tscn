@@ -11,6 +11,7 @@ extents = Vector2( 16, 6 )
 [node name="BulletSwordSlash" instance=ExtResource( 1 )]
 
 transform/rot = -90.0
+collision/layers = 2
 time_to_live = 0.2
 
 [node name="CollisionShape2D" parent="."]
