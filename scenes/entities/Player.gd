@@ -29,7 +29,7 @@ func _fixed_process(delta):
 	update_sprite()
 
 func use():
-	var bullet = preload("Bullet.tscn").instance()
+	var bullet = preload("BulletSwordSlash.tscn").instance()
 	bullet.shoot_from(self, get_spawn_node())
 
 func interact():

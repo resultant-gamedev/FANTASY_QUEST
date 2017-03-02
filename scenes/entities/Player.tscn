@@ -50,14 +50,17 @@ transform/pos = Vector2( 16, 0 )
 [node name="Up" type="Position2D" parent="."]
 
 transform/pos = Vector2( 0, -16 )
+transform/rot = 90.0
 
 [node name="Left" type="Position2D" parent="."]
 
 transform/pos = Vector2( -16, 0 )
+transform/rot = 180.0
 
 [node name="Down" type="Position2D" parent="."]
 
 transform/pos = Vector2( 0, 16 )
+transform/rot = 270.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
