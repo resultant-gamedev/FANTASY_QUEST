@@ -24,6 +24,11 @@ func _fixed_process(delta):
 	if moving:
 		var motion = move(direction * speed * delta)
 		if is_colliding():
+			var body = get_collider()
+			
+			if body.has_method("bumped"):
+				body.bumped(self, motion)
+			
 			motion = move(get_collision_normal().slide(motion))
 	
 	update_sprite()

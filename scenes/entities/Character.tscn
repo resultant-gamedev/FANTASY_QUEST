@@ -5,6 +5,8 @@
 
 [node name="Character" instance=ExtResource( 1 )]
 
+collision/layers = 13
+collision/mask = 3
 script/script = ExtResource( 2 )
 
 [node name="Right" type="Position2D" parent="."]
