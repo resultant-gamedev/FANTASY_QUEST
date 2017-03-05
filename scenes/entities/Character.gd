@@ -1,5 +1,5 @@
 # Base class for all characters. Player, enemies, etc.
-extends KinematicBody2D
+extends "Actor.gd"
 
 const DIR_RIGHT = "Right"
 const DIR_UP = "Up"
@@ -8,14 +8,7 @@ const DIR_DOWN = "Down"
 
 var facing = DIR_DOWN setget set_facing, get_facing
 
-var moving = false
-var direction = Vector2()
-var speed = 0
-
 signal facing_changed(from, to)
-
-func _ready():
-	set_fixed_process(true)
 
 func _fixed_process(delta):
 	pass
