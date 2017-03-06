@@ -60,4 +60,11 @@ script/script = null
 
 script/script = null
 
+[node name="Facing" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 0, 0 )
+layer_mask = 1
+type_mask = 15
+
 

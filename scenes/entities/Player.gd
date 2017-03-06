@@ -38,7 +38,16 @@ func use():
 	bullet.shoot_from(self, get_spawn_node())
 
 func interact():
-	print("interact")
+	var facing_vector = (get_node(get_facing()).get_global_pos() - get_global_pos()).normalized()
+	facing_vector *= 32
+	var ray = get_node("Facing")
+	ray.set_cast_to(facing_vector)
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var other = ray.get_collider()
+		
+		if other.has_method("interacted"):
+			other.interacted(self, facing_vector)
 
 func update_input():
 	moving = false
