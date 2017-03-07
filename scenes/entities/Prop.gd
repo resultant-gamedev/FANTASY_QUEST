@@ -25,7 +25,6 @@ func bumped(other, other_motion):
 
 func interacted(other, direction):
 	var impulse = direction * 512
-	print(impulse)
 	set_mode(RigidBody2D.MODE_CHARACTER)
 	apply_impulse(Vector2(0, 0), impulse)
 
