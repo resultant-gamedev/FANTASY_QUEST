@@ -25,4 +25,4 @@ func get_spawn_node():
 	return get_node(facing)
 
 func get_facing_direction():
-	return (get_spawn_node().get_pos() - get_pos()).normalized()
+	return (get_spawn_node().get_global_pos() - get_global_pos()).normalized()

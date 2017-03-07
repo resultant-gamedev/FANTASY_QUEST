@@ -24,8 +24,10 @@ func bumped(other, other_motion):
 	apply_impulse(Vector2(0, 0), opposite * 8)
 
 func interacted(other, direction):
+	var impulse = direction * 512
+	print(impulse)
 	set_mode(RigidBody2D.MODE_CHARACTER)
-	apply_impulse(Vector2(0, 0), direction * 16)
+	apply_impulse(Vector2(0, 0), impulse)
 
 func on_sleep_state_change():
 	if is_sleeping():
