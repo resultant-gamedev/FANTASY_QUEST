@@ -2,8 +2,8 @@ extends RigidBody2D
 
 # TODO: Moar props!
 
-var sleep_threshold_linear = Globals.get("physics/sleep_threshold_linear")
-var time_before_sleep = Globals.get("physics/time_before_sleep")
+var sleep_threshold_linear = Globals.get("physics_2d/sleep_threashold_linear")
+var time_before_sleep = Globals.get("physics_2d/time_before_sleep")
 var countdown = time_before_sleep
 
 func _ready():
