@@ -1,40 +1,35 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-# TODO: Implement "bumped" handlers; "push," "grid_push," "switch" perhaps with delay
-# FIXME: Broken physics.
+# TODO: Moar props!
 
-var direction = Vector2()
-var speed = 0
-var friction = 0.9
+var sleep_threshold_linear = Globals.get("physics/sleep_threshold_linear")
+var time_before_sleep = Globals.get("physics/time_before_sleep")
+var countdown = time_before_sleep
 
 func _ready():
-	set_fixed_process(false)
+	pass
 
-func _fixed_process(delta):
-	get_node("Sprite").set_modulate(Color(1,0,0))
-	
-	if speed > 0:
-		var motion = move(direction * speed * delta)
-		
-		if is_colliding():
-			if get_collider().has_method("bumped"):
-				get_collider().bumped(self, motion)
-			motion = move(get_collision_normal().reflect(motion))
-			direction = motion.normalized()
-	
-	speed = speed * friction
-	if speed < 0.05:
-		speed = 0
-		get_node("Sprite").set_modulate(Color(1,1,1))
-		set_fixed_process(false)
+# Need to reimplement sleeping as MODE_CHARACTER does not sleep, ever
+func _integrate_forces(state):
+	if not is_sleeping() and state.get_linear_velocity().length() < sleep_threshold_linear:
+		if countdown < 0:
+			set_sleeping(true)
+			on_sleep_state_change()
+			countdown = time_before_sleep
+		countdown -= state.get_step()
 
 func bumped(other, other_motion):
-	if other extends get_script():
-		direction = (get_global_pos() - other.get_global_pos()).normalized()
-		speed = 128
-		set_fixed_process(true)
+	var opposite = (get_global_pos() - other.get_global_pos()).normalized()
+	set_mode(RigidBody2D.MODE_CHARACTER)
+	apply_impulse(Vector2(0, 0), opposite * 8)
 
 func interacted(other, direction):
-	self.direction = direction
-	speed = 128
-	set_fixed_process(true)
+	set_mode(RigidBody2D.MODE_CHARACTER)
+	apply_impulse(Vector2(0, 0), direction * 16)
+
+func on_sleep_state_change():
+	if is_sleeping():
+		set_mode(RigidBody2D.MODE_STATIC)
+		get_node("Sprite").set_modulate(Color(0.5, 0.5, 0.5))
+	else:
+		get_node("Sprite").set_modulate(Color(1, 1, 1))
