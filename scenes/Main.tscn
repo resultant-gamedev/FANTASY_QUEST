@@ -40,9 +40,7 @@ transform/pos = Vector2( 201.237, 98.3539 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 37.5298, 52.7358 )
-input/pickable = false
 collision/layers = 1
 collision/mask = 1
-collision/margin = 0.08
 
 

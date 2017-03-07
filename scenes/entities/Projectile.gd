@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+# TODO: Rename 'Bullet' to 'Projectile'
 # TODO: Implement sword and shield.
 
 const SPECIFIC_VALUE = 0
@@ -55,7 +56,7 @@ func shoot_from(shooter, spawn_node = null):
 	if motion_type == SHOOTER_MOTION:
 		direction = shooter.direction
 	elif motion_type == SHOOTER_FACING:
-		direction = (shooter.get_spawn_node().get_global_pos() - shooter.get_global_pos()).normalized()
+		direction = shooter.get_facing_direction()
 	elif motion_type == RANDOM:
 		direction = 2 * Vector2(randf() - 0.5, randf() - 0.5);
 
