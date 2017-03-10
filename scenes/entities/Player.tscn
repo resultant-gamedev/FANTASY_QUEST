@@ -11,6 +11,8 @@ radius = 16.0
 
 [node name="Player" instance=ExtResource( 1 )]
 
+collision/layers = 1
+collision/mask = 68
 script/script = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="."]
@@ -27,8 +29,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 1
-collision/mask = 1
 script/script = null
 
 [node name="CollisionShape2D" parent="Hitbox"]
@@ -36,16 +36,6 @@ script/script = null
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-script/script = null
-
-[node name="Sprite" parent="."]
-
-texture = ExtResource( 3 )
-hframes = 4
-script/script = null
-
-[node name="Right" parent="."]
-
 script/script = null
 
 [node name="Up" parent="."]
@@ -56,15 +46,22 @@ script/script = null
 
 script/script = null
 
-[node name="Down" parent="."]
+[node name="Sprite" parent="."]
 
+z/z = 1
+texture = ExtResource( 3 )
+hframes = 4
 script/script = null
+
+[node name="Carry" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -12 )
 
 [node name="Facing" type="RayCast2D" parent="."]
 
 enabled = true
-cast_to = Vector2( 0, 0 )
-layer_mask = 1
+cast_to = Vector2( 0, 32 )
+layer_mask = 4
 type_mask = 15
 
 

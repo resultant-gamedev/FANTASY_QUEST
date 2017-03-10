@@ -9,6 +9,10 @@ collision/layers = 13
 collision/mask = 3
 script/script = ExtResource( 2 )
 
+[node name="Hitbox" parent="."]
+
+monitoring = true
+
 [node name="Right" type="Position2D" parent="."]
 
 transform/pos = Vector2( 16, 0 )

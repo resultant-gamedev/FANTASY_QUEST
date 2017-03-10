@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-# TODO: Rename 'Bullet' to 'Projectile'
 # TODO: Implement sword and shield.
 
 const SPECIFIC_VALUE = 0
@@ -30,9 +29,7 @@ func _fixed_process(delta):
 	
 	time_to_live -= delta
 	if time_to_live <= 0:
-		if oriented:
-			shooter.disconnect("facing_changed", self, "reorient")
-		get_parent().remove_child(self)
+		self_destruct()
 
 func shoot_from(shooter, spawn_node = null):
 	self.shooter = shooter
@@ -64,3 +61,8 @@ func reorient(from, to):
 	if attached:
 		shooter.get_node(from).remove_child(self)
 		shooter.get_node(to).add_child(self)
+
+func self_destruct():
+	if oriented:
+		shooter.disconnect("facing_changed", self, "reorient")
+	get_parent().remove_child(self)

@@ -6,6 +6,7 @@ extends "Character.gd"
 var Character = preload("Character.gd")
 
 const WALK_SPEED = 128
+var moving = false
 
 func _ready():
 	facing = Character.DIR_RIGHT

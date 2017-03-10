@@ -34,3 +34,6 @@ func on_sleep_state_change():
 		get_node("Sprite").set_modulate(Color(0.5, 0.5, 0.5))
 	else:
 		get_node("Sprite").set_modulate(Color(1, 1, 1))
+
+func _on_body_enter( body ):
+	set_opacity(0.25)
